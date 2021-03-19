@@ -15,7 +15,7 @@ p.start(2.5) # Initialisierung
 GPIO.output(enginePIN, 0)
 
 def duty(angle):
-    return angle / 18 + 2
+   return angle / 18 + 2
 
 def finish():
     p.stop()
@@ -23,13 +23,12 @@ def finish():
     GPIO.cleanup()
 
 try:
-    p.ChangeDutyCycle(duty(30))
-    time.sleep(2)
-    p.ChangeDutyCycle(duty(130))
-    time.sleep(2)
-    GPIO.output(enginePIN, 1)
-    time.sleep(10)
+    p.ChangeDutyCycle(duty(87))
+    time.sleep(1)
     finish()
         
 except KeyboardInterrupt:
     finish()
+
+# 87, 105, 105 , 125, 130
+# 87, 71, 57, 53
