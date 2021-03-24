@@ -2,7 +2,11 @@ console.clear()
 
 var dgram = require('dgram')
 var socket = dgram.createSocket('udp4')
-const PORT = 7777
+const PORT = 8888
+
+socket.on('error',(error)=>{
+    console.log(error);
+})
 
 socket.on('message', (msg, info)=>{
     console.log("Message: " + msg);
