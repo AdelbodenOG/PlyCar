@@ -25,6 +25,8 @@ def finish():
 try:
     p.ChangeDutyCycle(duty(87))
     time.sleep(1)
+    GPIO.output(enginePIN, 1)
+    time.sleep(2)
     finish()
         
 except KeyboardInterrupt:
