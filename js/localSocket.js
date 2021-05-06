@@ -17,5 +17,5 @@ module.exports = function emitControl(data){
 
 //Listen on the Port 7070
 server.listen(port, ()=>{
-    console.log("Server open on port: " + port)
+    console.log("Local Socket open on port: " + port)
 })
