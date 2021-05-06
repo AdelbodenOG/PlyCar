@@ -35,12 +35,12 @@ def tryServo():
     time.sleep(2)
     pi.set_servo_pulsewidth(servoPIN, 1500)
     time.sleep(2)
-tryServo()
+#tryServo()
 
 #Initalise the Socket IO client
 socket = socketio.Client()
 #Connects to the local socket 
-print("Connect to local Server")
+print("Connect to Server")
 socket.connect("http://192.168.60.91")
 
 #Listen to the chanel "car-control" and pass on to the axis script
