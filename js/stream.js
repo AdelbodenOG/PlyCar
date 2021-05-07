@@ -10,7 +10,7 @@ module.exports = async function initStream(config){
         fps: config.fps,
         width: config.width,
         height: config.height,
-        bitRate: config.rate * 10000 ///1000000
+        bitRate: config.rate 
     })
     
     //Start Capture

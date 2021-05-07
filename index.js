@@ -13,13 +13,10 @@ console.log("Initialise Stream")
 stream(config)
 
 //Starts the python proccesses 
+
 const python = spawn('python', ["-u", './py/control.py'])
     
 //Listen & logs the Python Prints 
 python.stdout.on("data", (data)=>{
     console.log("Python: "+ data)
-})
-
-python.stdout.on("error", (data)=>{
-    console.log("Python Error: "+ data);
 })

@@ -6,12 +6,14 @@ import pigpio
 import pigpio
 import time
 import socketio
+import json
 
 #Import of the other python files
 import buzzer
 import axis
 import config 
 from servoTower import PCA9685
+
 
 #Turns the Servo once the whole angle
 pi = pigpio.pi()
@@ -43,8 +45,10 @@ socket = socketio.Client()
 print("Connect to Server")
 socket.connect("http://192.168.60.91")
 
+print("ready")
+
 #Listen to the chanel "car-control" and pass on to the axis script
-#@socket.on("car-control")
+@socket.on("car-control")
 def control(data):
 
     #If the gas button is pressed it sendes the gear to the axis file

@@ -1,8 +1,9 @@
 const pty = require("node-pty")
 const os = require("os")
+const io = require('socket.io-client')
 const config = require('./js/config.json')
-const socket = require('./io')
 
+socket = io(`http://${config.ip}`) 
 
 function init(ip, socket) {
 
@@ -23,7 +24,6 @@ function init(ip, socket) {
     })
 
     socket.on("shell-resize", data => {
-        console.log("yee");
         shell.resize(data.cols, data.rows)
     })
 
