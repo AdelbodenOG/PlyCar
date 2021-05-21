@@ -19,6 +19,6 @@ module.exports = async function initStream(config){
     //Sends the data on the udp Socket 
     while(true){
         var buffer = await streamCamera.takeImage()
-        client.send(buffer, 0, buffer.length, config.port, config.ip)
+        client.send(buffer, 0, buffer.length, config.udpPort, config.ip)
     }
 }

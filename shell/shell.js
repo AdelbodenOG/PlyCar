@@ -1,7 +1,7 @@
 const pty = require("node-pty")
 const os = require("os")
 const io = require('socket.io-client')
-const config = require('./js/config.json')
+const config = require('../js/config.json')
 
 socket = io(`http://${config.ip}`) 
 
