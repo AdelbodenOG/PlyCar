@@ -1,8 +1,9 @@
 const gpio = require('pigpio').Gpio;
-const io = require('socket.io-client')
+const net = require('net');
 const config = require('./config.json')
+var client = new net.Socket()
 
-var socket = io(`http://${config.ip}`) 
+client.connect({host: config.ip, port: 8000})
 var servo = new gpio(4, {mode: gpio.OUTPUT})
 var motor = new gpio(14, {mode: gpio.OUTPUT})
 var panServo = new gpio(17, {mode: gpio.OUTPUT})
@@ -13,8 +14,11 @@ console.log("Setup done")
 
 var i = 0
 
-module.exports = socket.on("car-control", data =>{
+module.exports = client.on('data', (data)=>{
 
+    console.log(data.toString('utf-8'));
+
+    /*
     var axis = data.axis * 500 + 1500 
     var speed = (data.gear * 10 + 1500) + (data.speed * 100)
     var pan = data.pan * 500 + 1510 
@@ -30,7 +34,7 @@ module.exports = socket.on("car-control", data =>{
     servo.servoWrite(axis)
     motor.servoWrite(speed)
     panServo.servoWrite(pan)
-    tiltServo.servoWrite(tilt)
+    tiltServo.servoWrite(tilt)*/
 })
 
 function init(def){
