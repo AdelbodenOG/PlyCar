@@ -3,38 +3,27 @@ const net = require('net');
 const config = require('./config.json')
 var client = new net.Socket()
 
-client.connect({host: config.ip, port: 8000})
+client.connect({host: config.ip, port: 5050})
 var servo = new gpio(4, {mode: gpio.OUTPUT})
 var motor = new gpio(14, {mode: gpio.OUTPUT})
 var panServo = new gpio(17, {mode: gpio.OUTPUT})
 var tiltServo = new gpio(27, {mode: gpio.OUTPUT})
 init(1500)
-
 console.log("Setup done")
 
-var i = 0
+client.on('data', (data)=>{
 
-module.exports = client.on('data', (data)=>{
+    var controls = JSON.parse(data.toString('utf-8'))
 
-    console.log(data.toString('utf-8'));
-
-    /*
-    var axis = data.axis * 500 + 1500 
-    var speed = (data.gear * 10 + 1500) + (data.speed * 100)
-    var pan = data.pan * 500 + 1510 
-    var tilt = data.tilt * 500 + 1510 
-
-    if(data.reverse == 1 && !data.speed == 1){
-        //tfd
-    }
-
-    console.log(tilt);
-    console.log(pan);
+    var axis = controls.axis * 500 + 1500 
+    var speed = (controls.gear * 100) * controls.speed + 1500
+    var pan = controls.pan * 500 + 1500
+    var tilt = controls.tilt * 500 + 1500
 
     servo.servoWrite(axis)
     motor.servoWrite(speed)
     panServo.servoWrite(pan)
-    tiltServo.servoWrite(tilt)*/
+    tiltServo.servoWrite(tilt)
 })
 
 function init(def){
