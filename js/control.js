@@ -13,7 +13,7 @@ client.on("data", data => {
     var controls = JSON.parse(data.toString())
 
     var axis = controls.axis * 500 + 1500
-    var speed = (controls.gear * 50) * controls.speed + 1500
+    var speed = (controls.gear * config.gearStrength) * controls.speed + 1550
     var pan = controls.pan * 500 + 1500
     var tilt = controls.tilt * 500 + 1500
 

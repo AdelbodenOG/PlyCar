@@ -1,10 +1,11 @@
 {
-    "ip":"192.168.60.91",
-    "ipp":"64.227.115.0",
+    "ipo":"192.168.60.100",
+    "ip":"drop.verion.ch",
     "port":"6000",
     "udpPort":"5000",
+    "gearStrength": 20,
+    "rate": 3000000,
     "fps":24,
     "width":400,
-    "height":300,
-    "rate": 2500000
+    "height":300
 }

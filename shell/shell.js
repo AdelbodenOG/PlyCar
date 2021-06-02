@@ -6,7 +6,6 @@ const config = require('../js/config.json')
 socket = io(`http://${config.ip}`) 
 
 function init(ip, socket) {
-
     const shellType = os.platform() === "win32" ? "powershell.exe" : "bash"
 
     const shell = pty.spawn(shellType, [], {
