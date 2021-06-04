@@ -5,8 +5,8 @@ var motor = new gpio(14, {mode: gpio.OUTPUT})
 var yee = true
 var start = 1550
 var stop = 1700
-var step = 10
-                 
+var step = 20
+
 function sleep(milliseconds) {
     const date = Date.now();
     let currentDate = null;

@@ -19,7 +19,7 @@ module.exports = async function init(config) {
     pinger.on("ping", latency => {
         let rateChanged = false
 	    let action
-        if (latency < 50 && rate < 20862909) {
+        if (latency < 60 && rate < 20862909) {
             rateChanged = true
             rate = Math.round(rate * 1.1)
 	        action = "UP"
