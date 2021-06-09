@@ -23,6 +23,7 @@ function createServer(interface, port) {
 
     server.on("message", (buffer, info) => {
         const data = parse(buffer)
+        console.log(data);
 
         if (data != undefined) {
             const isRegister = registerClient(data, info)
@@ -55,7 +56,7 @@ function createServer(interface, port) {
             data: data,
         }))
 
-        console.log(`Sending to: ${client.address}:${client.port}`);
+        //console.log(`Sending to: ${client.address}:${client.port}`);
 
         server.send(packet, client.port, client.address, err => {
             if(err) {

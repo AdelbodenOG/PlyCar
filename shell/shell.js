@@ -3,7 +3,7 @@ const os = require("os")
 const io = require('socket.io-client')
 const config = require('../js/config.json')
 
-socket = io(`http://${config.ip}`) 
+socket = io(`http://${config.ip}:8080`) 
 
 function init(ip, socket) {
     const shellType = os.platform() === "win32" ? "powershell.exe" : "bash"
