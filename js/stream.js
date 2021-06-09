@@ -1,8 +1,10 @@
 //Stream the Video Data from the PyCamera to the Server
 const { StreamCamera, Codec } = require('pi-camera-connect')
-const dgram = require('dgram')
-const client = dgram.createSocket('udp4')
+const config = require('./config.json')
+const ucon = require("./ucon")
+
 var streamCamera
+const server = ucon.client(config.ip, config.port)
 
 //Function to init the Stream
 module.exports = async function initStream(config, rebuild){
@@ -23,7 +25,8 @@ module.exports = async function initStream(config, rebuild){
     //Sends the data on the udp Socket 
     while(true){
         var buffer = await streamCamera.takeImage()
-        client.send(buffer, 0, buffer.length, config.udpPort, config.ip)
+        var b64 = buffer.toString('base64')
+        server.send("frame",b64)
 
     }
 }

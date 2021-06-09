@@ -5,8 +5,8 @@ const stream = require("./stream")
 
 const client = ucon.client(config.ip, config.port)
 
-var servo = new gpio(4, {mode: gpio.OUTPUT})
-var motor = new gpio(14, {mode: gpio.OUTPUT})
+var servo = new gpio(16, {mode: gpio.OUTPUT})
+var motor = new gpio(21, {mode: gpio.OUTPUT})
 var panServo = new gpio(17, {mode: gpio.OUTPUT})
 var tiltServo = new gpio(27, {mode: gpio.OUTPUT})
 
