@@ -1,11 +1,11 @@
 const gpio = require('pigpio').Gpio;
 
-var motor = new gpio(14, {mode: gpio.OUTPUT})
+var motor = new gpio(21, {mode: gpio.OUTPUT})
 
 var yee = true
-var start = 500
-var stop = 1600
-var step = 100
+var start = 1600
+var stop = 2500
+var step = 10
 
 function sleep(milliseconds) {
     const date = Date.now();
@@ -15,8 +15,9 @@ function sleep(milliseconds) {
     } while (currentDate - date < milliseconds);
 }
 
-motor.servoWrite(1500)
+motor.servoWrite(1125)
 sleep(1000)
+
 
 while(yee){
     //try{
