@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/AdelbodenOG/PlyCar#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "dgram": "^1.0.1",
     "imagemin": "^8.0.0",
     "node-pty": "^0.10.0",
@@ -25,6 +26,7 @@
     "ping": "^0.4.1",
     "sharp": "^0.28.3",
     "socket.io-client": "^4.0.0",
-    "utf-8-validate": "^5.0.5"
+    "utf-8-validate": "^5.0.5",
+    "xml-js": "^1.6.11"
   }
 }

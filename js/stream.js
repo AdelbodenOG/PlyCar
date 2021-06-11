@@ -7,26 +7,28 @@ var streamCamera
 const server = ucon.client(config.ip, config.port)
 
 //Function to init the Stream
-module.exports = async function initStream(config, rebuild){
-    if(rebuild == true){
-        streamCamera.stopCapture()
-    }
-    streamCamera = new StreamCamera({
-        codec: Codec.MJPEG,
-        fps: config.fps,
-        width: config.width,
-        height: config.height,
-        bitRate: config.rate 
-    })
-    
-    //Start Capture
-    streamCamera.startCapture()
-    
-    //Sends the data on the udp Socket 
-    while(true){
-        var buffer = await streamCamera.takeImage()
-        var b64 = buffer.toString('base64')
-        server.send("frame",b64)
+module.exports = {
+        initStream: async (rebuild)=>{
+        if(rebuild == true){
+            streamCamera.stopCapture()
+        }
+        streamCamera = new StreamCamera({
+            codec: Codec.MJPEG,
+            fps: config.fps,
+            width: config.width,
+            height: config.height,
+            bitRate: config.rate 
+        })
+        
+        //Start Capture
+        streamCamera.startCapture()
+        
+        //Sends the data on the udp Socket 
+        while(true){
+            var buffer = await streamCamera.takeImage()
+            var b64 = buffer.toString('base64')
+            server.send("frame",b64)
 
+        }
     }
 }
