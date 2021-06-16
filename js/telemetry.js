@@ -1,10 +1,13 @@
 const axios = require("axios")
 const parser = require("xml-js")
-const config = require('./config.json')
-const ucon = require("./ucon")
-const socket = ucon.client(config.ip, config.port)
 
-var lastUpdate = {}
+var lastUpdate
+
+module.exports = {
+    init: (socket, config) => {
+        init(socket, config)
+    }
+}
 
 function timer(ms) {
     return new Promise(resolve => {
@@ -14,11 +17,16 @@ function timer(ms) {
     })
 }
 
+async function init(socket, config) {
+    console.log("Initiating telemetry");
+    updateTelemetry(socket)
+}
+
 async function updateTelemetry(socket) {
     const telemetry = {}
 
     telemetry.connection = await signalStatus()
- 
+    
     dispatch(telemetry, socket)
 
     await timer(1000)
@@ -28,7 +36,7 @@ async function updateTelemetry(socket) {
 function dispatch(data, socket) {
     if (JSON.stringify(data) != JSON.stringify(lastUpdate)) {
         socket.send("telemetry", data)
-        lastUpdate = data
+        //lastUpdate = data
     }
 }
 
@@ -39,7 +47,6 @@ async function signalStatus() {
         const trafficUrl = '/api/monitoring/traffic-statistics'
 
         const status = await fetch(host + statusUrl)
-        console.log("wait");
         const traffic = await fetch(host + trafficUrl)
 
         const connection = {
@@ -77,12 +84,4 @@ function fetch(url) {
             resolve(json.response)
         }
     })
-}
-
-module.exports = {
-    init:async =>{
-        console.log("yee");
-        console.log("Initiating telemetry");
-        updateTelemetry(socket)
-    }
 }

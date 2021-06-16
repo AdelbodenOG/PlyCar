@@ -8,5 +8,6 @@
     "rateUpdate": 500000,
     "fps":24,
     "width":400,
-    "height":300
+    "height":300,
+    "brightness": 60
 }

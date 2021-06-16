@@ -26,6 +26,7 @@
     "ping": "^0.4.1",
     "sharp": "^0.28.3",
     "socket.io-client": "^4.0.0",
+    "tree-kill": "^1.2.2",
     "utf-8-validate": "^5.0.5",
     "xml-js": "^1.6.11"
   }
