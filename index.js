@@ -7,7 +7,7 @@ const server = ucon.client(config.ip, config.port)
 
 const control = require('./js/control')
 const stream = require('./js/stream')
-const telemetry = require('./js/telemetry')
+//const telemetry = require('./js/telemetry')
 
 function init() {
     stream.initStream()
